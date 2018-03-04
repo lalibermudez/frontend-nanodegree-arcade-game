@@ -24,7 +24,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var x, y;
+var xPlayer, yPlayer;
 var Player = function() {
     this.sprite = 'images/char-boy.png';
 };
@@ -33,33 +33,33 @@ Player.prototype.update = function(dt) {
 // LAL fill with something...?
 };
 
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), 101, 320);
+Player.prototype.render = function(x, y) {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function(key) {
     if (key === 'left') {
-        x = x - 101;
+        xPlayer = xPlayer - 101;
     } else if (key === 'up') {
-        y = y - 85;
+        yPlayer = yPlayer - 85;
     } else if (key === 'right') {
-        x = x + 101;
+        xPlayer = xPlayer + 101;
     } else if (key === 'down') {
-        y = y + 85;
+        yPlayer = yPlayer + 85;
     };
 
-    if (x < 0) {
-        x = 0;
+    if (xPlayer < 0) {
+        xPlayer = 0;
     };
-    if (x > 404) {
-        x = 404;
+    if (xPlayer > 404) {
+        xPlayer = 404;
     };
 
-    if (y < 0) {
-        x = -10;
+    if (yPlayer < 0) {
+        yPlayer = -10;
     };
-    if (y > 405) {
-        y = 405;
+    if (yPlayer > 405) {
+        yPlayer = 405;
     };
 };
 
