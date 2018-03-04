@@ -33,11 +33,20 @@ Player.prototype.update = function(dt) {
 };
 
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), 0, 320);
+    ctx.drawImage(Resources.get(this.sprite), 0, 100);
 };
 
-Player.prototype.handleInput = function() {
-// LAL fill with something...?
+Player.prototype.handleInput = function(key) {
+    if (key === 'left') {
+
+    } else if (key === 'up') {
+
+    } else if (key === 'right') {
+
+    } else if (key === 'down') {
+
+    }
+
 };
 
 // Now instantiate your objects.
