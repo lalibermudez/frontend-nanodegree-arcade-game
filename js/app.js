@@ -24,6 +24,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var x, y;
 var Player = function() {
     this.sprite = 'images/char-boy.png';
 };
@@ -38,7 +39,7 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(key) {
     if (key === 'left') {
-
+        x = x - 101;
     } else if (key === 'up') {
 
     } else if (key === 'right') {
