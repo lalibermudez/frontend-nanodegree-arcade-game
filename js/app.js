@@ -24,43 +24,69 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var xPlayer, yPlayer;
+var x, y;
 var Player = function() {
+    // Set the player initial location
+    this.x = 202;
+    this.y = 405;
+    // console.log('1-' + x);
+    // console.log('1-' + y);
+    // Draw the player
     this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function(dt) {
-// LAL fill with something...?
+
+
+    player.render(x, y);
+    // console.log('3-' + x);
+    // console.log('3-' + y);
 };
 
 Player.prototype.render = function(x, y) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    console.log('4-' + x);
+    console.log('4-' + y);
 };
 
 Player.prototype.handleInput = function(key) {
+    // Move the player on screen according to the pressed key
     if (key === 'left') {
-        xPlayer = xPlayer - 101;
+        x -= 101;
     } else if (key === 'up') {
-        yPlayer = yPlayer - 85;
+        y -= 83;
     } else if (key === 'right') {
-        xPlayer = xPlayer + 101;
+        x += 101;
     } else if (key === 'down') {
-        yPlayer = yPlayer + 85;
+        y += 83;
     };
 
-    if (xPlayer < 0) {
-        xPlayer = 0;
+    // Make sure the player does not exit the canvas
+    if  (x < 0) {
+        x = 0;
     };
-    if (xPlayer > 404) {
-        xPlayer = 404;
+    if  (x > 404) {
+        x = 404;
     };
 
-    if (yPlayer < 0) {
-        yPlayer = -10;
+    if  (y < 0) {
+        y = -10;
     };
-    if (yPlayer > 405) {
-        yPlayer = 405;
+    if  (y > 405) {
+        y = 405;
     };
+
+    //Send player back to initial position if it reaches the water
+    if  (y >= -10) {
+        y = 405;
+        x = 202;
+    };
+    
+    console.log('2-' + x);
+    console.log('2-' + y);
+    player.update();
+
+
 };
 
 // Now instantiate your objects.
@@ -82,6 +108,4 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-    // console.log(allowedKeys[e.keyCode]);
-    // console.log([e.keyCode]);
 });
