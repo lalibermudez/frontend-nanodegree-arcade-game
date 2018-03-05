@@ -24,7 +24,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var x, y;
+
 var Player = function() {
     // Set the player initial location
     this.x = 202;
@@ -43,22 +43,37 @@ Player.prototype.update = function(dt) {
     // console.log('3-' + y);
 };
 
+Player.prototype.reset = function() {
+    // Reset the player to the starting position
+    this.y = 405;
+    this.x = 202;      
+};
+
+Player.prototype.win = function() {
+    // Action to take when the player reaches the water
+    setTimeout(function() {
+        player.reset()
+    }, 1000);
+};
+
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log('4-' + x);
-    console.log('4-' + y);
 };
 
 Player.prototype.handleInput = function(key) {
     // Move the player on screen according to the pressed key
     if (key === 'left') {
-        this.x -= 101;
+        this.x = this.x - 101;
+        console.log('left' + this.x);
     } else if (key === 'up') {
-        this.y -= 83;
+        this.y = this.y - 83;
+        console.log('up' + this.y);
     } else if (key === 'right') {
-        this.x += 101;
+        this.x = this.x +  101;
+        console.log('right' + this.x);
     } else if (key === 'down') {
-        this.y += 83;
+        this.y = this.y + 83;
+        console.log('down' + this.y);
     };
 
     // Make sure the player does not exit the canvas
@@ -77,16 +92,9 @@ Player.prototype.handleInput = function(key) {
     };
 
     //Send player back to initial position if it reaches the water
-    if  (this.y >= -10) {
-        this.y = 405;
-        this.x = 202;
+    if  (this.y <= -10) {
+        player.win();
     };
-
-    console.log('2-' + x);
-    console.log('2-' + y);
-    // player.render(x, y);
-
-
 };
 
 // Now instantiate your objects.
