@@ -38,12 +38,12 @@ var Player = function() {
 Player.prototype.update = function(dt) {
 
 
-    player.render(x, y);
+     // player.render(x, y);
     // console.log('3-' + x);
     // console.log('3-' + y);
 };
 
-Player.prototype.render = function(x, y) {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     console.log('4-' + x);
     console.log('4-' + y);
@@ -52,39 +52,39 @@ Player.prototype.render = function(x, y) {
 Player.prototype.handleInput = function(key) {
     // Move the player on screen according to the pressed key
     if (key === 'left') {
-        x -= 101;
+        this.x -= 101;
     } else if (key === 'up') {
-        y -= 83;
+        this.y -= 83;
     } else if (key === 'right') {
-        x += 101;
+        this.x += 101;
     } else if (key === 'down') {
-        y += 83;
+        this.y += 83;
     };
 
     // Make sure the player does not exit the canvas
-    if  (x < 0) {
-        x = 0;
+    if  (this.x < 0) {
+        this.x = 0;
     };
-    if  (x > 404) {
-        x = 404;
+    if  (this.x > 404) {
+        this.x = 404;
     };
 
-    if  (y < 0) {
-        y = -10;
+    if  (this.y < 0) {
+        this.y = -10;
     };
-    if  (y > 405) {
-        y = 405;
+    if  (this.y > 405) {
+        this.y = 405;
     };
 
     //Send player back to initial position if it reaches the water
-    if  (y >= -10) {
-        y = 405;
-        x = 202;
+    if  (this.y >= -10) {
+        this.y = 405;
+        this.x = 202;
     };
-    
+
     console.log('2-' + x);
     console.log('2-' + y);
-    player.update();
+    // player.render(x, y);
 
 
 };
