@@ -12,7 +12,7 @@ var Enemy = function(y) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = 0;
-    this.y = 73;
+    this.y = y;
 };
 
 // Update the enemy's position, required method for game
@@ -104,15 +104,28 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player          
-var allEnemies = [new Enemy];
+var allEnemies = [];
+
+for (var i = 0; i <= numEnemies ; i++) {
+    chooseRow();
+    console.log(y);
+    allEnemies.push(new Enemy(y));
+};
 
 var player = new Player();
 
 // Generate the enemies' positions
 
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+};
+
 // Choose randomly one of the rows that the enemy may use
 function chooseRow() {
-    let row = Math.floor(Math.random() * 3 + 1); // Chooses a random integer number between 1 and 3
+    let row = getRandomInt(1, 3);
     if (row === 1) {
         y = 73;
     } else if (row === 2) {
@@ -123,10 +136,15 @@ function chooseRow() {
     return y;
 };
 
-chooseRow();
-console.log(y);
-
-
+function chooseSpeed() {
+    let test = Math.random() * 5 + 1;
+    let test2 = Math.floor(test);
+    console.log(test);
+    console.log(test2);
+};
+chooseSpeed();
+chooseSpeed();
+chooseSpeed();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
