@@ -6,6 +6,8 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y;
 };
 
 // Update the enemy's position, required method for game
@@ -93,8 +95,22 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player          
 var allEnemies = [];
 
-var player = new Player(); //*** place the Player object in here!!!
+var player = new Player();
 
+// Generate the enemies' positions
+
+// Choose randomly one of the rows that the enemy may use
+// Function from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function chooseRow() {
+    let row = Math.floor(Math.random() * 3 + 1); // Chooses a random integer number between 1 and 3
+    if (row === 1) {
+        y = 73;
+    } else if (row === 2) {
+        y = 156;
+    } else if (row === 3) {
+        y = 239;
+    }
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -105,6 +121,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
