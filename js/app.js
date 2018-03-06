@@ -1,10 +1,10 @@
 let speed = 100;
 let y;
-let level = 1;
+let level = 2;
 let numEnemies = level * 2;
 
 // Enemies our player must avoid
-var Enemy = function(y) {
+var Enemy = function(y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -13,6 +13,7 @@ var Enemy = function(y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = 0;
     this.y = y;
+    this.speed = speed;
 };
 
 // Update the enemy's position, required method for game
@@ -106,7 +107,7 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player          
 var allEnemies = [];
 
-for (var i = 0; i <= numEnemies ; i++) {
+for (var i = 0; i < numEnemies ; i++) {
     chooseRow();
     console.log(y);
     allEnemies.push(new Enemy(y));
@@ -116,7 +117,7 @@ var player = new Player();
 
 // Generate the enemies' positions
 
-
+// Generate a random integer between two inclusive numbers, source: MDN
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -136,11 +137,11 @@ function chooseRow() {
     return y;
 };
 
+// Choose randomly the speed the enemy is going to use
+// Difficulty increases with level number
 function chooseSpeed() {
-    let test = Math.random() * 5 + 1;
-    let test2 = Math.floor(test);
-    console.log(test);
-    console.log(test2);
+    let randomSpeed = getRandomInt(1, level * 2);
+    speed = speed * randomSpeed;
 };
 chooseSpeed();
 chooseSpeed();
