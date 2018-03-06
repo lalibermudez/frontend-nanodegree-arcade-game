@@ -29,31 +29,26 @@ var Player = function() {
     // Set the player initial location
     this.x = 202;
     this.y = 405;
-    // console.log('1-' + x);
-    // console.log('1-' + y);
+
     // Draw the player
     this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function(dt) {
-
-
-     // player.render(x, y);
-    // console.log('3-' + x);
-    // console.log('3-' + y);
 };
 
-Player.prototype.reset = function() {
-    // Reset the player to the starting position
+Player.prototype.initial = function() {
+    // Return the player to the starting position
     this.y = 405;
     this.x = 202;      
 };
 
-Player.prototype.win = function() {
+Player.prototype.reset = function() {
     // Action to take when the player reaches the water
+    // or collides with an enemy
     setTimeout(function() {
-        player.reset()
-    }, 1000);
+        player.initial()
+    }, 500);
 };
 
 Player.prototype.render = function() {
@@ -64,16 +59,12 @@ Player.prototype.handleInput = function(key) {
     // Move the player on screen according to the pressed key
     if (key === 'left') {
         this.x = this.x - 101;
-        console.log('left' + this.x);
     } else if (key === 'up') {
         this.y = this.y - 83;
-        console.log('up' + this.y);
     } else if (key === 'right') {
         this.x = this.x +  101;
-        console.log('right' + this.x);
     } else if (key === 'down') {
         this.y = this.y + 83;
-        console.log('down' + this.y);
     };
 
     // Make sure the player does not exit the canvas
@@ -93,7 +84,7 @@ Player.prototype.handleInput = function(key) {
 
     //Send player back to initial position if it reaches the water
     if  (this.y <= -10) {
-        player.win();
+        player.reset();
     };
 };
 
