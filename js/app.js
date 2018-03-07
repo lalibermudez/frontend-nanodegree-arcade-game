@@ -100,7 +100,8 @@ Player.prototype.handleInput = function(key) {
     if  (this.y <= -10) {
         player.reset();
         level += 1;
-        console.log('level' + level); // TODO:delete row
+        console.log('level ' + level); // TODO:delete row
+        resetEnemies();
         createEnemies();
     //TODO: add sound
     };
@@ -120,6 +121,14 @@ function createEnemies() {
     };
 };
 createEnemies();
+
+// Reset enemies for every new level
+function resetEnemies() {
+    numEnemies += 1;
+    for (var i = 0; i < numEnemies ; i++) {
+        allEnemies.pop();
+    };
+};
 
 var player = new Player();
 
