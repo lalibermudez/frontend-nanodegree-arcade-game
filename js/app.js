@@ -100,6 +100,8 @@ Player.prototype.handleInput = function(key) {
     if  (this.y <= -10) {
         player.reset();
         level += 1;
+        console.log('level' + level); // TODO:delete row
+        createEnemies();
     //TODO: add sound
     };
 };
@@ -109,13 +111,15 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player          
 var allEnemies = [];
 
-
-for (var i = 0; i < numEnemies ; i++) {
-    chooseRow();
-    chooseSpeed();
-    console.log(y); //TODO: delete row
-    allEnemies.push(new Enemy(y, speed));
+function createEnemies() {
+    for (var i = 0; i < numEnemies ; i++) {
+        chooseRow();
+        chooseSpeed();
+        console.log(y); //TODO: delete row
+        allEnemies.push(new Enemy(y, speed));
+    };
 };
+createEnemies();
 
 var player = new Player();
 
