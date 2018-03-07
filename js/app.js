@@ -1,7 +1,7 @@
 let speed = 100;
 let y;
 let level = 1;
-let numEnemies = level + 1;
+let numEnemies = 2;
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -11,7 +11,7 @@ var Enemy = function(y, speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = -101;
+    this.x = -202;
     this.y = y;
     this.speed = speed;
 };
@@ -26,7 +26,7 @@ Enemy.prototype.update = function(dt) {
     this.y = this.y;
     // Make the enemy loop around when it exits the canvas
     if (this.x > 505) {
-        this.x = -101;
+        this.x = -202;
     };
 };
 
