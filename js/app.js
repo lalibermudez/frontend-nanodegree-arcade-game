@@ -28,6 +28,15 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505) {
         this.x = -202;
     };
+    console.log('enemy X ' + this.x);
+    console.log('enemy Y ' + this.y);
+    console.log('player X ' + player.x);
+    console.log('player Y ' + player.y);
+    if ((this.x === player.x) && (thix.y === player.y)) {
+        player.reset();
+        // resetEnemies();
+        // TODO: add shake and sound
+    };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -96,7 +105,8 @@ Player.prototype.handleInput = function(key) {
         this.y = 405;
     };
 
-    //Send player back to initial position if it reaches the water
+    // If player reaches the water, send it back to initial position
+    // and increase level number, this increases the number of Enemies
     if  (this.y <= -10) {
         player.reset();
         level += 1;
@@ -124,7 +134,7 @@ createEnemies();
 
 // Reset enemies for every new level
 function resetEnemies() {
-    numEnemies += 1;
+    numEnemies = level + 1;
     for (var i = 0; i < numEnemies ; i++) {
         allEnemies.pop();
     };
