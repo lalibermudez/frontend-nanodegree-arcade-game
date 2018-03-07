@@ -28,13 +28,12 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505) {
         this.x = -202;
     };
-    console.log('enemy X ' + this.x);
-    console.log('enemy Y ' + this.y);
-    console.log('player X ' + player.x);
-    console.log('player Y ' + player.y);
-    if ((this.x === player.x) && (thix.y === player.y)) {
+    // console.log('enemy X ' + this.x);
+    // console.log('enemy Y ' + this.y);
+    // console.log('player X ' + player.x);
+    // console.log('player Y ' + player.y);
+    if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
         player.reset();
-        // resetEnemies();
         // TODO: add shake and sound
     };
 };
