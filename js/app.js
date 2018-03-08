@@ -35,29 +35,22 @@ Enemy.prototype.update = function(dt) {
     // console.log('player X ' + player.x);
     // console.log('player Y ' + player.y);
     // Check for collisions between enemy and player
-    if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
-        collision();
-        // TODO: DELETE!!!
-        // setTimeout(function() {
-        //     player.reset()
-        // }, 100);
-        // collisionSound.play();
-    };
+    this.collision();
+    // if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
+    //     updateLife(life);
+    //     collision(life);
+    //     // TODO: DELETE!!!
+    //     // setTimeout(function() {
+    //     //     player.reset()
+    //     // }, 100);
+    //     // collisionSound.play();
+    // };
 };
 
 // Decrease one life when collision happens
 function updateLife() {
     life -= 1;
-}
-
-// Action to take when collision happens: play sound, player reset, decrease one heart
-function collision() {
-    updateLife();
-    setTimeout(function() {
-        player.reset()
-    }, 100);
-    collisionSound.play();
-    console.log(life);
+    console.log("life1 " + life);
     switch (life) {
         case 4:
             document.getElementById('life5').className = "entypo-heart-empty";
@@ -75,6 +68,18 @@ function collision() {
             document.getElementById('life1').className = "entypo-heart-empty";
             // TODO: add GameOver modal and sound
             break;
+    };
+};
+
+// Action to take when collision happens: play sound, player reset, decrease one heart
+Enemy.prototype.collision = function() {
+    if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
+        console.log("life2 " + life);
+        setTimeout(function() {
+            player.reset()
+        }, 100);
+        collisionSound.play();
+        updateLife();
     };
 };
 
