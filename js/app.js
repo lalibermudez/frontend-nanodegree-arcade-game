@@ -2,7 +2,7 @@ let speed = 100;
 let y;
 let level = 1;
 let numEnemies = 2;
-let lives = 5;
+let life = 5;
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -45,14 +45,20 @@ Enemy.prototype.update = function(dt) {
     };
 };
 
+// Decrease one life when collision happens
+function updateLife() {
+    life -= 1;
+}
+
+// Action to take when collision happens: play sound, player reset, decrease one heart
 function collision() {
+    updateLife();
     setTimeout(function() {
         player.reset()
     }, 100);
     collisionSound.play();
-    console.log(lives);
-    lives -= 1;
-    switch (lives) {
+    console.log(life);
+    switch (life) {
         case 4:
             document.getElementById('life5').className = "entypo-heart-empty";
             break;
@@ -67,12 +73,10 @@ function collision() {
             break;
         case 0:
             document.getElementById('life1').className = "entypo-heart-empty";
-            // TODO: add GameOver modal
+            // TODO: add GameOver modal and sound
             break;
-
-    }
-
-}
+    };
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
