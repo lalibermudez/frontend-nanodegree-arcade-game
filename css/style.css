@@ -21,12 +21,12 @@ h1 {
   font-family: 'entypo', sans-serif;
 }
 
-ul {
+.hearts {
 	color: #e2414c;
 	list-style-type: none;
 	display: inline-block;
 	text-align: left;
-	margin-bottom: 0;
+	margin: 0 60px;
 }
 
 li {
@@ -37,4 +37,5 @@ li {
 	color: #03bc10;
 	font-size: 20px;
 	text-align: right;
+	margin-left: 50px;
 }
