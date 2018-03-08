@@ -2,6 +2,7 @@ let speed = 100;
 let y;
 let level = 1;
 let numEnemies = 2;
+let lives = 5;
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -35,12 +36,43 @@ Enemy.prototype.update = function(dt) {
     // console.log('player Y ' + player.y);
     // Check for collisions between enemy and player
     if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
-        setTimeout(function() {
-            player.reset()
-        }, 100);
-        collisionSound.play();
+        collision();
+        // TODO: DELETE!!!
+        // setTimeout(function() {
+        //     player.reset()
+        // }, 100);
+        // collisionSound.play();
     };
 };
+
+function collision() {
+    setTimeout(function() {
+        player.reset()
+    }, 100);
+    collisionSound.play();
+    console.log(lives);
+    lives -= 1;
+    switch (lives) {
+        case 4:
+            document.getElementById('life5').className = "entypo-heart-empty";
+            break;
+        case 3:
+            document.getElementById('life4').className = "entypo-heart-empty";
+            break;
+        case 2:
+            document.getElementById('life3').className = "entypo-heart-empty";
+            break;
+        case 1:
+            document.getElementById('life2').className = "entypo-heart-empty";
+            break;
+        case 0:
+            document.getElementById('life1').className = "entypo-heart-empty";
+            // TODO: add GameOver modal
+            break;
+
+    }
+
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -190,8 +222,7 @@ function chooseSpeed() {
     console.log('speed' + speed); //TODO: delete row
 };
 
-// This creates an object constructor to handle sounds for the game 
-// with HTML5 <audio> element
+// This creates an object constructor to handle sounds for the game with HTML5 <audio> element
 // From https://www.w3schools.com/graphics/game_sound.asp
 var Sound = function(src) {
     this.sound = document.createElement('audio');
