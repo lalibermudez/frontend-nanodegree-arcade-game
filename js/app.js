@@ -108,13 +108,17 @@ Player.prototype.handleInput = function(key) {
     // If player reaches the water, send it back to initial position
     // and increase level number, this increases the number of Enemies
     if  (this.y <= -10) {
-        player.reset();
-        level += 1;
-        console.log('level ' + level); // TODO:delete row
-        resetEnemies();
-        createEnemies();
-        winSound.play();
+        levelUp();
     };
+};
+
+function levelUp () {
+    player.reset();
+    level += 1;
+    resetEnemies();
+    createEnemies();
+    winSound.play();
+    document.getElementById("level").innerHTML = level;
 };
 
 // Now instantiate your objects.
