@@ -71,7 +71,7 @@ Player.prototype.reset = function() {
     // or collides with an enemy
     setTimeout(function() {
         player.initial()
-    }, 500);
+    }, 200);
 };
 
 Player.prototype.render = function() {
