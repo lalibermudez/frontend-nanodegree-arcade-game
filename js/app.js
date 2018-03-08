@@ -174,6 +174,18 @@ function chooseSpeed() {
     console.log('speed' + speed); //TODO: delete row
 };
 
+// This creates an object constructor to handle sounds for the game
+// From https://www.w3schools.com/graphics/game_sound.asp
+var Sound = function(src) {
+    this.sound = document.createElement('audio');
+    this.sound.src = src;
+    this.sound.style.display = 'none';
+    document.body.appendChild(this.sound);
+    this.play = function() {
+        this.sound.play();
+    };
+};
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
