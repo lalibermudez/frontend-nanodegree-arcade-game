@@ -28,13 +28,16 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505) {
         this.x = -202;
     };
+    // TODO: DELETE!!!
     // console.log('enemy X ' + this.x);
     // console.log('enemy Y ' + this.y);
     // console.log('player X ' + player.x);
     // console.log('player Y ' + player.y);
     // Check for collisions between enemy and player
     if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
-        player.reset();
+        setTimeout(function() {
+            player.reset()
+        }, 100);
         collisionSound.play();
     };
 };
@@ -60,18 +63,24 @@ var Player = function() {
 Player.prototype.update = function(dt) {
 };
 
-Player.prototype.initial = function() {
-    // Return the player to the starting position
-    this.y = 405;
-    this.x = 202;      
-};
+//TODO: DELETE!!!
+// Player.prototype.initial = function() {
+//     // Return the player to the starting position
+//     this.y = 405;
+//     this.x = 202;      
+// };
 
 Player.prototype.reset = function() {
     // Action to take when the player reaches the water
     // or collides with an enemy
-    setTimeout(function() {
-        player.initial()
-    }, 200);
+    this.y = 405;
+    this.x = 202;
+
+
+    //TODO:DELETE!!!
+    // setTimeout(function() {
+    //     player.initial()
+    // }, 200);
 };
 
 Player.prototype.render = function() {
@@ -113,12 +122,14 @@ Player.prototype.handleInput = function(key) {
 };
 
 function levelUp () {
-    player.reset();
     level += 1;
     resetEnemies();
     createEnemies();
     winSound.play();
     document.getElementById("level").innerHTML = level;
+    setTimeout(function() {
+        player.reset()
+    }, 600);
 };
 
 // Now instantiate your objects.
