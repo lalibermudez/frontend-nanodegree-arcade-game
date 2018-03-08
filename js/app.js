@@ -32,9 +32,10 @@ Enemy.prototype.update = function(dt) {
     // console.log('enemy Y ' + this.y);
     // console.log('player X ' + player.x);
     // console.log('player Y ' + player.y);
+    // Check for collisions between enemy and player
     if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
         player.reset();
-        // TODO: add shake and sound
+        collisionSound.play();
     };
 };
 
@@ -112,7 +113,7 @@ Player.prototype.handleInput = function(key) {
         console.log('level ' + level); // TODO:delete row
         resetEnemies();
         createEnemies();
-    //TODO: add sound
+        winSound.play();
     };
 };
 
