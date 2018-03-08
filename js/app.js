@@ -174,7 +174,8 @@ function chooseSpeed() {
     console.log('speed' + speed); //TODO: delete row
 };
 
-// This creates an object constructor to handle sounds for the game
+// This creates an object constructor to handle sounds for the game 
+// with HTML5 <audio> element
 // From https://www.w3schools.com/graphics/game_sound.asp
 var Sound = function(src) {
     this.sound = document.createElement('audio');
@@ -185,6 +186,13 @@ var Sound = function(src) {
         this.sound.play();
     };
 };
+
+// Create new sound objects
+// All sounds obtained from http://soundbible.com/
+var winSound = new Sound("sounds/TaDa.mp3");
+var collisionSound = new Sound("sounds/StrangeSlip.mp3");
+var gameOverSound = new Sound("sounds/SadTrombone.mp3");
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
