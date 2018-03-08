@@ -206,3 +206,8 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// Restart game if refresh button is clicked
+document.getElementById("refresh-button").addEventListener("click", function( event ) {
+    location.reload();
+  }, false);
