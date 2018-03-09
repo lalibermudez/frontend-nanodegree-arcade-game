@@ -18,11 +18,7 @@ h1 {
 	color: #2f65bc;
 }
 
-/* Icons for lives and refresh button,imported from weloveiconfonts.com */
-/* entypo */
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-}
+/* Icons for lives and refresh button, from https://material.io/icons/ */
 
 .hearts {
 	color: #e2414c;
