@@ -27,7 +27,7 @@ Enemy.prototype.update = function(dt) {
     this.y = this.y;
     // Make the enemy loop around when it exits the canvas
     if (this.x > 505) {
-        this.x = -202;
+        this.x = -101;
     };
     
     // Check for collisions between enemy and player
