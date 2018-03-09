@@ -55,10 +55,19 @@ function updateHearts(life) {
     };
 };
 
-function decreaseLife() {
-    player.life -= 1;
-    return player.life;
-};
+// Function to decrease player's life by one, when collision occurs
+// Function with closure to be executed only once during the if statement in the enemy.collision method
+// Closure function obtained from https://stackoverflow.com/questions/12713564/function-in-javascript-that-can-be-called-only-once
+var decreaseLife = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            player.life -= 1;
+            return player.life;
+        }
+    };   
+})();
 
 // Action to take when collision happens: play sound, player reset, decrease one heart
 Enemy.prototype.collision = function() {
