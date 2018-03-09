@@ -2,7 +2,6 @@ let speed = 100;
 let y;
 let level = 1;
 let numEnemies = 2;
-// let life = 5;
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -29,29 +28,13 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505) {
         this.x = -202;
     };
-    // TODO: DELETE!!!
-    // console.log('enemy X ' + this.x);
-    // console.log('enemy Y ' + this.y);
-    // console.log('player X ' + player.x);
-    // console.log('player Y ' + player.y);
-
+    
     // Check for collisions between enemy and player
     this.collision();
-    // if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
-    //     updateLife(life);
-    //     collision(life);
-    //     // TODO: DELETE!!!
-    //     // setTimeout(function() {
-    //     //     player.reset()
-    //     // }, 100);
-    //     // collisionSound.play();
-    // };
 };
 
 // Function to update Hearts when collision happens
 function updateHearts(life) {
-    // life -= 1;
-    console.log("life1 " + life);
     switch (life) {
         case 4:
             document.getElementById('life5').className = "entypo-heart-empty";
@@ -86,10 +69,8 @@ Enemy.prototype.collision = function() {
         }, 100);
         collisionSound.play();
         decreaseLife();
-        // player.life = player.life - 1;
         console.log('player.life' + player.life);
         updateHearts(player.life);
-        // updateLife(); TODO DELETE!!
     };
 };
 
@@ -115,24 +96,11 @@ var Player = function() {
 Player.prototype.update = function(dt) {
 };
 
-//TODO: DELETE!!!
-// Player.prototype.initial = function() {
-//     // Return the player to the starting position
-//     this.y = 405;
-//     this.x = 202;      
-// };
-
 Player.prototype.reset = function() {
     // Action to take when the player reaches the water
     // or collides with an enemy
     this.y = 405;
     this.x = 202;
-
-
-    //TODO:DELETE!!!
-    // setTimeout(function() {
-    //     player.initial()
-    // }, 200);
 };
 
 Player.prototype.render = function() {
@@ -232,14 +200,11 @@ function chooseRow() {
 };
 
 // Choose randomly the speed the enemy is going to use
-// Difficulty increases with level number
 function chooseSpeed() {
     let speedMin = 100;
     let speedMax = 300;
     let randomSpeed = getRandomInt(speedMin, speedMax);
     speed = randomSpeed;
-    console.log('randomSpeed' + randomSpeed); //TODO: delete row
-    console.log('speed' + speed); //TODO: delete row
 };
 
 // This creates an object constructor to handle sounds for the game with HTML5 <audio> element
