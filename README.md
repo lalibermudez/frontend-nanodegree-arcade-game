@@ -18,7 +18,7 @@ The object of the game is to get the Player to cross safely from the grass to th
 
 ## How to run the Game
 
-To start playing, just click [here.] ()
+To start playing, just click [here.](https://lalibermudez.github.io/frontend-nanodegree-arcade-game/)
 
 **Have Fun!**
 
