@@ -19,7 +19,6 @@ h1 {
 }
 
 /* Icons for lives and refresh button, from https://material.io/icons/ */
-
 .hearts {
 	color: #e2414c;
 	list-style-type: none;
@@ -38,4 +37,9 @@ li {
 	font-size: 20px;
 	text-align: right;
 	margin-left: 50px;
+}
+
+.modal-title {
+	font-weight: bold;
+	color: #dd131e;
 }
