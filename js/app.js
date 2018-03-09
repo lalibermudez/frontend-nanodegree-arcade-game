@@ -51,7 +51,6 @@ function updateHearts(life) {
             break;
         case 0:
             document.getElementById('life1').className = "entypo-heart-empty";
-            // TODO: add GameOver modal and sound
             setTimeout(function() {
                 $('#myModal').modal('show');
                 gameOverSound.play();    
@@ -59,7 +58,6 @@ function updateHearts(life) {
             $('.btn-primary').click(function() {
                 location.reload();
             });
-            // TODO add function to restart button
             break;
     };
 };
@@ -80,13 +78,11 @@ var decreaseLife = (function() {
 // Action to take when collision happens: play sound, player reset, decrease one heart
 Enemy.prototype.collision = function() {
     if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
-        console.log("life2 " + player.life);
         setTimeout(function() {
             player.reset()
         }, 100);
         collisionSound.play();
         decreaseLife();
-        console.log('player.life' + player.life);
         updateHearts(player.life);
     };
 };
@@ -179,7 +175,6 @@ function createEnemies() {
     for (var i = 0; i < numEnemies ; i++) {
         chooseRow();
         chooseSpeed();
-        console.log(y); //TODO: delete row
         allEnemies.push(new Enemy(y, speed));
     };
 };
