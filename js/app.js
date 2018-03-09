@@ -38,19 +38,19 @@ Enemy.prototype.update = function(dt) {
 function updateHearts(life) {
     switch (life) {
         case 4:
-            document.getElementById('life5').className = "entypo-heart-empty";
+            document.getElementById('life5').innerHTML = "<i class='material-icons'>favorite_border</i>";
             break;
         case 3:
-            document.getElementById('life4').className = "entypo-heart-empty";
+            document.getElementById('life4').innerHTML = "<i class='material-icons'>favorite_border</i>";
             break;
         case 2:
-            document.getElementById('life3').className = "entypo-heart-empty";
+            document.getElementById('life3').innerHTML = "<i class='material-icons'>favorite_border</i>";
             break;
         case 1:
-            document.getElementById('life2').className = "entypo-heart-empty";
+            document.getElementById('life2').innerHTML = "<i class='material-icons'>favorite_border</i>";
             break;
         case 0:
-            document.getElementById('life1').className = "entypo-heart-empty";
+            document.getElementById('life1').innerHTML = "<i class='material-icons'>favorite_border</i>";
             setTimeout(function() {
                 $('#myModal').modal('show');
                 gameOverSound.play();    
