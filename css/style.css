@@ -8,10 +8,14 @@ h1 {
 	color: #2c323a;
 }
 
+.score-panel {
+	margin-top: 60px;
+}
+
 #level, .level-title {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 20px;
-	color: #424a56;
+	color: #2f65bc;
 }
 
 /* Icons for lives and refresh button,imported from weloveiconfonts.com */
@@ -32,7 +36,8 @@ li {
 	float: left;
 	margin: 0 3px;
 }
-.refresh {
+
+#refresh-button {
 	color: #03bc10;
 	font-size: 20px;
 	text-align: right;
