@@ -55,7 +55,10 @@ function updateHearts(life) {
             setTimeout(function() {
                 $('#myModal').modal('show');
                 gameOverSound.play();    
-            }, 1000);
+            }, 1200);
+            $('.btn-primary').click(function() {
+                location.reload();
+            });
             // TODO add function to restart button
             break;
     };
