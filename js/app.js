@@ -2,7 +2,7 @@ let speed = 100;
 let y;
 let level = 1;
 let numEnemies = 2;
-let life = 5;
+// let life = 5;
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -34,6 +34,7 @@ Enemy.prototype.update = function(dt) {
     // console.log('enemy Y ' + this.y);
     // console.log('player X ' + player.x);
     // console.log('player Y ' + player.y);
+
     // Check for collisions between enemy and player
     this.collision();
     // if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
@@ -47,9 +48,9 @@ Enemy.prototype.update = function(dt) {
     // };
 };
 
-// Decrease one life when collision happens
-function updateLife() {
-    life -= 1;
+// Function to update Hearts when collision happens
+function updateHearts(life) {
+    // life -= 1;
     console.log("life1 " + life);
     switch (life) {
         case 4:
@@ -71,15 +72,24 @@ function updateLife() {
     };
 };
 
+function decreaseLife() {
+    player.life -= 1;
+    return player.life;
+};
+
 // Action to take when collision happens: play sound, player reset, decrease one heart
 Enemy.prototype.collision = function() {
     if ((this.x >= player.x - 50) && (this.x <= player.x + 50) && (this.y === player.y)) {
-        console.log("life2 " + life);
+        console.log("life2 " + player.life);
         setTimeout(function() {
             player.reset()
         }, 100);
         collisionSound.play();
-        updateLife();
+        decreaseLife();
+        // player.life = player.life - 1;
+        console.log('player.life' + player.life);
+        updateHearts(player.life);
+        // updateLife(); TODO DELETE!!
     };
 };
 
@@ -99,6 +109,7 @@ var Player = function() {
 
     // Draw the player
     this.sprite = 'images/char-boy.png';
+    this.life = 5;
 };
 
 Player.prototype.update = function(dt) {
