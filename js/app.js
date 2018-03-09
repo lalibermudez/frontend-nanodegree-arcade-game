@@ -52,6 +52,11 @@ function updateHearts(life) {
         case 0:
             document.getElementById('life1').className = "entypo-heart-empty";
             // TODO: add GameOver modal and sound
+            setTimeout(function() {
+                $('#myModal').modal('show');
+                gameOverSound.play();    
+            }, 1000);
+            // TODO add function to restart button
             break;
     };
 };
