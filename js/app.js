@@ -2,6 +2,7 @@ let speed = 100;
 let y;
 let level = 1;
 let numEnemies = 2;
+var executed = false;
 
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
@@ -59,7 +60,6 @@ function updateHearts(life) {
 // Function with closure to be executed only once during the if statement in the enemy.collision method
 // Closure function obtained from https://stackoverflow.com/questions/12713564/function-in-javascript-that-can-be-called-only-once
 var decreaseLife = (function() {
-    var executed = false;
     return function() {
         if (!executed) {
             executed = true;
@@ -110,6 +110,7 @@ Player.prototype.reset = function() {
     // or collides with an enemy
     this.y = 405;
     this.x = 202;
+    executed = false;
 };
 
 Player.prototype.render = function() {
